@@ -13,24 +13,38 @@
 <div class="container">
     <div style="display: flex; flex-direction: column">
         <div>
-            <h1>start</h1>
-            <input id="start" data-clocklet="class-name: clocklet-color-example; placement: top;">
+            <h2 id="work">+08:30</h2>
+        </div>
+
+        <div>
+            <input id="workTime" data-clocklet="class-name: clocklet-color-example; placement: bottom;">
             <script>
-                const element = document.getElementById("start");
-                element.addEventListener("input", (e) => {
-                    let time = e.detail.time.plus({hours: 8, minutes: 30});
-                    console.log(e.detail.time);
-                    document.getElementById("display").innerText = time.format("H:mm")
+                workTime.addEventListener("input", (e) => {
+                    workHours = e.detail.time.hours;
+                    workMinutes = e.detail.time.minutes;
+
+                    document.getElementById("work").innerText = "+" + e.detail.time.format("H:mm")
                 })
             </script>
         </div>
 
         <div>
-            <h2>+08:30 </h2><h2 id="display">Time</h2>
-        </div>
+            <h1>start</h1>
+            <input id="start" data-clocklet="class-name: clocklet-color-example; placement: top;">
+            <script>
+                var workHours = 8;
+                var workMinutes = 30;
+                var start = document.getElementById('start');
+                var workTime = document.getElementById('workTime');
 
+                start.addEventListener("input", (e) => {
+                    let time = e.detail.time.plus({hours: workHours, minutes: workMinutes});
+                    document.getElementById("display").innerText = time.format("H:mm")
+                })
+            </script>
+        </div>
         <div>
-            <h1 id="remain"></h1>
+            <h1 id="display"></h1>
         </div>
     </div>
 </div>
