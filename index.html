@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <meta charset="UTF-8">
+    <title>Wann ist Feierabend?</title>
+    <script src="clocket.js"></script>
+    <link rel="stylesheet" href="clocket.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/6.0.0/normalize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div style="display: flex; flex-direction: column">
+        <div>
+            <h1>start</h1>
+            <input id="start" data-clocklet="class-name: clocklet-color-example; placement: top;">
+            <script>
+                const element = document.getElementById("start");
+                element.addEventListener("input", (e) => {
+                    let time = e.detail.time.plus({hours: 8, minutes: 30});
+                    console.log(e.detail.time);
+                    document.getElementById("display").innerText = time.format("H:mm")
+                })
+            </script>
+        </div>
+
+        <div>
+            <h2>+08:30 </h2><h2 id="display">Time</h2>
+        </div>
+
+        <div>
+            <h1 id="remain"></h1>
+        </div>
+    </div>
+</div>
+</body>
+</html>
